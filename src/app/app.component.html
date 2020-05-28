@@ -1,0 +1,86 @@
+<h1>Job Application Form</h1>
+
+<form [formGroup] = "control" >
+  <label> 
+    Name:
+    <input type = "text" formControlName = "name" placeholder = "name">
+    <div *ngIf="formgroupcontrols.name.errors" class="invalid-feedback">
+      <div style="color: red" *ngIf="formgroupcontrols.name.errors.required">Name is required</div>
+      <div style="color: red" *ngIf="formgroupcontrols.name.errors.maxlength">Name cannot be more than 50 chars</div>
+    </div>
+    <div *ngIf = "!formgroupcontrols.name.errors"> <br> </div>
+    <br>
+  </label>
+
+  <label> 
+    Email:
+    <input type = "email" formControlName = "email" placeholder = "email">
+    <div *ngIf="formgroupcontrols.email.errors" class="invalid-feedback">
+      <div style="color: red" *ngIf="formgroupcontrols.email.errors.required">Email is required</div>
+      <div style="color: red" *ngIf="formgroupcontrols.email.errors.email">Email must be a valid email address</div>
+    </div>
+    <div *ngIf = "!formgroupcontrols.email.errors"> <br> </div>
+    <br>
+  </label>
+
+  <label> 
+    Phone:
+    <input type = "tel" formControlName = "phone" placeholder = "phone">
+    <div style="color: red" *ngIf = "formgroupcontrols.phone.errors?.required">Phone is required</div>
+    <div *ngIf = "!formgroupcontrols.phone.errors"> <br> </div>
+    <br>
+  </label>
+  
+  <label> 
+    Age:
+    <input type = "text" formControlName = "age" placeholder = "age">
+    <div *ngIf="formgroupcontrols.name.errors" class="invalid-feedback">
+      <div style="color: red" *ngIf = "formgroupcontrols.age.errors?.required">Age is required</div>
+      <div style="color: red" *ngIf = "formgroupcontrols.age.errors?.min">Must be 16</div>
+    </div>
+    <div *ngIf = "!formgroupcontrols.age.errors"> <br> </div>
+    <br>
+  </label>
+
+  <label> 
+    Join Date:
+    <input type = "date" formControlName = "joinDate">
+    <div style="color: red" *ngIf = "formgroupcontrols.joinDate.errors?.required">Join Date is required</div>
+    <div *ngIf = "!formgroupcontrols.joinDate.errors"> <br> </div>
+    <br>
+  </label>
+
+  <label> 
+    School Graduation Date:
+    <input type = "date" formControlName = "completionDate">
+    <div style="color: red" *ngIf = "formgroupcontrols.completionDate.errors?.required">Grad date is required</div>
+    <div *ngIf = "!formgroupcontrols.completionDate.errors"> <br> </div>
+    <br>
+  </label>
+
+  <label> 
+    Experience (in years):
+    <input type = "number" formControlName = "exp">
+    <div *ngIf="formgroupcontrols.name.errors" class="invalid-feedback">
+      <div style="color: red" *ngIf = "formgroupcontrols.exp.errors?.required">Exp is required</div>
+      <div style="color: red" *ngIf = "formgroupcontrols.exp.errors?.min">Must have positive years exp</div>
+      <div style="color: red" *ngIf = "formgroupcontrols.exp.errors?.expTooLarge">Exp can't be that large</div>
+    </div>
+    <div *ngIf = "!formgroupcontrols.exp.errors"> <br> </div>
+    <br>
+  </label>
+
+  <label> 
+    Accept Terms and Conditions:
+    <input type = "checkbox" formControlName = "acceptTerm">
+    <div style="color: red" *ngIf = "formgroupcontrols.acceptTerm.errors?.required">Must accept the terms</div>
+    <div *ngIf = "!formgroupcontrols.acceptTerm.errors"> <br> </div>
+  </label>
+  
+  <button (click) = "onClick()" [disabled]="!control.valid"> Submit </button>
+</form>
+
+<!-- the submit button isn't working. it never thinks the form is valid -->
+
+
+
